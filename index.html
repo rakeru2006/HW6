@@ -57,9 +57,6 @@
           var cityDiv = $("<div class='ciudad'>");
           
           // Storing the rating data
-        
-       
-
           var cityName = response.city.name;
           console.log(cityName);
           // Creating an element to have the rating displayed
@@ -79,13 +76,11 @@
           // Displaying the release year
           cityDiv.append(pTwo);
          // Storing the release year
-         
         var windG= response.list[0].wind.speed;
           console.log(tempG);
           // Creating an element to hold the release year
           var parr3 = $("<p>").text("Wind Speed: " + windG);
             cityDiv.append(parr3);
-
         // Storing the humidity
             var humid= response.list[0].main.humidity;
           console.log(humid);
