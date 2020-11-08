@@ -1,126 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style>
-    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-    .row.content {height: 1500px}
-    
-    /* Set gray background color and 100% height */
-    .sidenav {
-      background-color: #f1f1f1;
-      height: 100%;
-    }
-    
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }
-    
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height: auto;} 
+  <title>Weather city</title>
+  <style type="text/css">
+    button,
+    div,
+    form,
+    input {
+      margin: 10px;
     }
   </style>
-
-
 </head>
 <body>
-<div class="jumbotron text-center" >
-        <h1>Wheather Dashboard</h1>
-        <p>This app run in the browser and feature dynamically updated HTML and CSS.</p>
-      </div>
-      <div class="container">
+  <div class="container">
+    <h1>Weather Search</h1>
+    <!-- Rendered Buttons will get Dumped Here  -->
+    <div id="buttons-view"></div>
+    <form id="weather-form">
+
+      <label for="movie-input">Search City :</label>
+      <input type="text" id="movie-input">
+      <br>
+      <!-- Button triggers new movie to be added -->
+      <input id="add-movie" type="submit" value="Add a Movie, Yo!">
+    </form>
+    <!-- Movies will Get Dumped Here -->
+
+    <div id="movies-view"></div>
+
+    <div id="foot-view"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      // Initial array of movies
+   
+      var movies = ["Mexico ", "Paris", "Rusia", "Canada"];
+      // displayMovieInfo function re-renders the HTML to display the appropriate content
+      function displayMovieInfo() {
+        var nameCity = $(this).attr("data-name");
+
+        var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + nameCity + "&appid=b96e7e1ded82aa80685e6c10a625dfb9";
+
+
+       // var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
+        // Creating an AJAX call for the specific movie button being clicked
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).then(function(response) {
+            console.log(response);
+          // Creating a div to hold the city
+          var cityDiv = $("<div class='ciudad'>");
+          // Storing the rating data
+        
        
 
-                <div class="container-fluid">
-                <div class="row content">
-                    <div class="col-sm-3 sidenav">
-                    <h4>Search for a City</h4>
-                    <!-- We use this to make the search-->
-                    
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search Blog..">
-                        <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                        </span>
-                    </div>
-                    
-                    </div>
+          var cityName = response.city.name;
+          console.log(cityName);
+          // Creating an element to have the rating displayed
+          var pOne = $("<h1>").text(cityName);
+          // Displaying the name of city
+          cityDiv.append(pOne);
+          // Storing the temperature     
+          var dateSearch= response.list[0].dt_txt;
+          console.log(dateSearch);
+          // Creating an element to hold 
+          var parr = $("<p>").text("Date: " + dateSearch);
+            cityDiv.append(parr);
+          var tempG = response.list[0].main.temp;
+          console.log(tempG);
+          // Creating an element to hold the release year
+          var pTwo = $("<p>").text("Temp: " + tempG);
+          // Displaying the release year
+          cityDiv.append(pTwo);
+         // Storing the release year
+         
+        var tempG= response.list[0].wind.speed;
+          console.log(tempG);
+          // Creating an element to hold the release year
+          var parr3 = $("<p>").text("Wind Speed: " + tempG);
+            cityDiv.append(parr3);
 
-                    <div class="col-sm-9">
-                    
-                    
-                    <h4><small>RECENT SEARCH</small></h4>
-                    <hr>
-                    <ul class="nav nav-pills nav-stacked">
-                        <li class="active"><a href="#section1">City:</a></li>
-                        <li><a href="#section2">Temperature:</a></li>
-                        <li><a href="#section3">Humidity:</a></li>
-                        <li><a href="#section3">Wind Speed:</a></li>
-                        <li><a href="#section3">UV Index:</a></li>
-                    </ul><br>
+        // Storing the humidity
+            var humid= response.list[0].main.humidity;
+          console.log(humid);
+          // Creating an element to hold 
+          var parr4 = $("<p>").text("Humidity: " + humid);
+            cityDiv.append(parr4);
 
-                    
-                    
+            var uvIndex= response.list[0].main.humidity;
+          console.log(uvIndex);
+          // Creating an element to hold 
+          var parr5 = $("<p>").text("UV Index: " + uvIndex);
+            cityDiv.append(parr5);
+         for(var k=1; k <40; k++){
+             
+            var dayforecast= response.list[k].dt_txt;
+            var tempf= response.list[k].main.temp;
+          var parrf= $("<li>").text("Date:" + dayforecast+"Temp:"+tempf);
+            k= k+8;
+          cityDiv.append(parrf);
+         }
+ 
+          $("#movies-view").prepend(cityDiv);
+        });
+      }
+      // Function for displaying city data
+      function renderButtons() {
+        // Deleting the movies prior to adding new movies
+        // (this is necessary otherwise you will have repeat buttons)
+        $("#buttons-view").empty();
+        // Looping through the array of movies
+        for (var i = 0; i < movies.length; i++) {
+          // Then dynamicaly generating buttons for each city in the array
+          // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
+          var a = $("<button>");
+          // Adding a class of city-btn to our button
+          a.addClass("movie-btn");
+          // Adding a data-attribute
+          a.attr("data-name", movies[i]);
+          // Providing the initial button text
+          a.text(movies[i]);
+          // Adding the button to the buttons-view div
+          $("#buttons-view").prepend( a);
+        }
+      }
+      // This function handles events where a movie button is clicked
+      $("#add-movie").on("click", function(event) {
+        event.preventDefault();
+        // This line grabs the input from the textbox
+        var nameCity = $("#movie-input").val().trim();
+        // Adding movie from the textbox to our array
+        movies.push(nameCity);
+        // Calling renderButtons which handles the processing of our movie array
+        renderButtons();
+      });
+      // Adding a click event listener to all elements with a class of "movie-btn"
+      $(document).on("click", ".movie-btn", displayMovieInfo);
+      // Calling the renderButtons function to display the initial buttons
+      renderButtons();
 
-                    <div class="row">
-                        
+      /*function displayFotecastInfo() {
+        var nameCityF = $(this).attr("data-name");
 
-                        <div class="col-sm-2 text-center">
-                            <h4>Monday </h4>
+        var queryURLF = "http://api.openweathermap.org/data/2.5/forecast?q=" + nameCityF + "&appid=b96e7e1ded82aa80685e6c10a625dfb9";
 
-                            <div class="row"></div>
 
-                        <img src="bandmember.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-                        
-                        </div>
-                        <div class="col-sm-2 text-center">
-                        <h4> Tuesday</h4>
-                        <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <br>
-                        </div>
-                        <div class="col-sm-2 text-center">
-                            <h4>Wensday </h4>
+       // var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
+        // Creating an AJAX call for the specific movie button being clicked
+        $.ajax({
+          url: queryURLF,
+          method: "GET"
+        }).then(function(responsef){
+            console.log(responsef);
+          // Creating a div to hold the city
+          var forecastDiv = $("<div class='forecast'>");
+          // Storing the rating data
 
-                        <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-                        </div>
-                        <div class="col-sm-2 text-center">
-                            <h4>Thursday </h4>
+          // Storing the temperature     
+          var day1= response.list[1].dt_txt;
+          var parrf = $("h1").text("Date: " + dateSearch);
+          forecastDiv .append(parrf);
+          var tempGf = response.list[1].main.temp;
+          console.log(tempG);
+          // Creating an element to hold the release year
+          var pTwo = $("<p>").text("Temp: " + tempG);
+          // Displaying the release year
+          cityDiv.append(pTwo);
+         // Storing the release year
+         
+        var tempG= response.list[0].wind.speed;
+          console.log(tempG);
+          // Creating an element to hold the release year
+          var parr3 = $("<p>").text("Wind Speed: " + tempG);
+            cityDiv.append(parr3);
 
-                            <div class="row"></div>
-                        <img src="bandmember.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-                        
-                        </div>
-                        <div class="col-sm-2 text-center">
-                            <h4>Friday</h4>
+        // Storing the humidity
+            var humid= response.list[0].main.humidity;
+          console.log(humid);
+          // Creating an element to hold 
+          var parr4 = $("<p>").text("Humidity: " + humid);
+            cityDiv.append(parr4);
 
-                            <div class="row"></div>
-                        <img src="bandmember.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-                        
-                        </div>
-                        
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-<footer class="container-fluid">
-  <p>Footer Text</p>
-</footer>
+            var uvIndex= response.list[0].main.humidity;
+          console.log(uvIndex);
+          // Creating an element to hold 
+          var parr5 = $("<p>").text("UV Index: " + uvIndex);
+            cityDiv.append(parr5);
 
+ 
+       
+        });
+      }
+*/
+    </script>
+  </div>
 </body>
 </html>
