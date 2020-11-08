@@ -16,15 +16,17 @@
   <div class="container">
     <h1>Weather Search</h1>
     <!-- Rendered Buttons will get Dumped Here  -->
-    <div id="buttons-view"></div>
+    
     <form id="weather-form">
 
-      <label for="movie-input">Search City :</label>
+      <label for="movie-input">Name City :</label>
       <input type="text" id="movie-input">
       <br>
       <!-- Button triggers new movie to be added -->
-      <input id="add-movie" type="submit" value="Add a Movie, Yo!">
+      <input id="add-movie" type="submit" value="Click to Add Search city Button!">
     </form>
+   <!-- Rendered Buttons will get Dumped Here  -->
+    <div id="buttons-view"></div>
     <!-- Movies will Get Dumped Here -->
 
     <div id="movies-view"></div>
@@ -34,7 +36,7 @@
     <script type="text/javascript">
       // Initial array of movies
    
-      var movies = ["Mexico ", "Paris", "Rusia", "Canada"];
+      var movies = ["Mexico"];
       // displayMovieInfo function re-renders the HTML to display the appropriate content
       function displayMovieInfo() {
         var nameCity = $(this).attr("data-name");
@@ -50,7 +52,10 @@
         }).then(function(response) {
             console.log(response);
           // Creating a div to hold the city
+        
+  
           var cityDiv = $("<div class='ciudad'>");
+          
           // Storing the rating data
         
        
@@ -75,10 +80,10 @@
           cityDiv.append(pTwo);
          // Storing the release year
          
-        var tempG= response.list[0].wind.speed;
+        var windG= response.list[0].wind.speed;
           console.log(tempG);
           // Creating an element to hold the release year
-          var parr3 = $("<p>").text("Wind Speed: " + tempG);
+          var parr3 = $("<p>").text("Wind Speed: " + windG);
             cityDiv.append(parr3);
 
         // Storing the humidity
@@ -93,15 +98,24 @@
           // Creating an element to hold 
           var parr5 = $("<p>").text("UV Index: " + uvIndex);
             cityDiv.append(parr5);
+
+            var forecas ="Forecast next 5 day";
+         
+          var titFo = $("<h1>").text(forecas);
+          // Displaying the name of city
+          cityDiv.append(titFo);
+
          for(var k=1; k <40; k++){
              
             var dayforecast= response.list[k].dt_txt;
             var tempf= response.list[k].main.temp;
-          var parrf= $("<li>").text("Date:" + dayforecast+"Temp:"+tempf);
+            var windGf= response.list[k].wind.speed;
+            var humidf= response.list[k].main.humidity;
+          var parrf= $("<li>").text("Date:" + dayforecast+" "+"Temp:"+tempf+" "+"Wind: "+ windGf+" Humid:"+humidf);
             k= k+8;
           cityDiv.append(parrf);
          }
- 
+         $("#movies-view").empty();
           $("#movies-view").prepend(cityDiv);
         });
       }
@@ -128,6 +142,8 @@
       // This function handles events where a movie button is clicked
       $("#add-movie").on("click", function(event) {
         event.preventDefault();
+        // Empty the contents of the city-div, append the new city content
+     
         // This line grabs the input from the textbox
         var nameCity = $("#movie-input").val().trim();
         // Adding movie from the textbox to our array
@@ -137,6 +153,7 @@
       });
       // Adding a click event listener to all elements with a class of "movie-btn"
       $(document).on("click", ".movie-btn", displayMovieInfo);
+      // Empty the contents of the city-div, append the new city content
       // Calling the renderButtons function to display the initial buttons
       renderButtons();
 
