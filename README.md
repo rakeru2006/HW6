@@ -5,7 +5,7 @@
 
 
 This project is in this github repository [Github](https://github.com/rakeru2006/HW6)
-and can visualize in [Heroku](https://rakeru2006.github.io/HW6/)
+and can visualize in [Github Pages](https://rakeru2006.github.io/HW6/)
 
 
 ## Table of Contents :pushpin:
@@ -40,7 +40,7 @@ and you can plan a trip accordingly to the weather
 :speech_balloon:  :hammer: :eyeglasses:
   ***
 
-```
+
 ### How to start
 
 ```
