@@ -12,7 +12,7 @@ var UVindex = $("#uv-index");
 var weatherContent = $("#weather-content");
 
 // Get access to the OpenWeather API
-var APIkey = "a17e1499228be1f9c294ac18b234c7d7";
+var APIkey = "b96e7e1ded82aa80685e6c10a625dfb9";
 
 // Easy access to data
 var cityList = [];
