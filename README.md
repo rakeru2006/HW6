@@ -5,7 +5,7 @@
 
 
 This project is in this github repository [Github](https://github.com/rakeru2006/HW6/)
-and can visualize in [Github Pages ]()
+and can visualize in [Github Pages ](https://rakeru2006.github.io/HW6/)
 
 
 ## Table of Contents :pushpin:
