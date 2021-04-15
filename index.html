@@ -1,45 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+     <!-- Required meta tags -->
     <meta charset="UTF-8">
+    <!-- Bootstrap is developed mobile first, a strategy in which we optimize code for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Weather</title>
 
-  
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   
-<!-- CSS Reference -->
+<!-- CSS Reference 
 <link rel="stylesheet" href="./public/css/style.css" />
-
+-->
 
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet" type="text/css">
-<!-- Jquery reference -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
- 
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+
 
 
   </head>
+
 <body>
     <div class="container-fluid">
-        <div class="row navbar navbar-dark bg-dark">
+        <div class="row navbar navbar-primary bg-info">
             <div class="col-12 text-center">
-                <h1 class="navbar-brand pb-0 px-0">Weather Dashboard</h1>
+                <h1 class="text-uppercase">Weather Dashboard Report</h1>
+                <p><abbr title="openweathermap">OWM</abbr>Abrebations</p>
+                <p><abbr title="Farengeit">F</abbr> </p>
+                <p><abbr title="Mileagepourhour">MPH</abbr></p>
+               
+                <blockquote>	
+                    <p class="text-light">Resource Source https://openweathermap.org/api</p>
+                    </blockquote>
+
             </div>
         </div>
         <div class="row content-row">
-            <div class="col-12 col-md-3 bg-light pt-3">
-                <h5>Search for a city:</h5>
+            <div class="col-12 col-md-3 bg-secondary pt-3">
+               
+                <h4>Search for<mark>name city</mark>:</h4>
                 <form>
                     <div class="form-group input-group">
                         <input type="text" class="form-control" id="search-city" placeholder="Enter city here">
@@ -56,7 +62,7 @@
                         <!-- <li class="list-group-item"></li> -->
                         
                     </ul>
-                    <button id="clear-history" class="btn btn-sm btn-secondary hide">Clear History</button>
+                    <button id="clear-history" class="btn btn-sm btn-info hide">Clear History</button>
                 </div>
             </div>
             <div id="weather-content" class="col-12 col-md-9 hide">
@@ -68,13 +74,13 @@
                             <p class="mb-0">Temperature: <span id="current-temp"></span></p>
                             <p class="mb-0">Humidity: <span id="current-humidity"></span></p>
                             <p class="mb-0">Wind Speed: <span id="current-wind-speed"></span></p>
-                            <p>UV index: <span id="uv-index"></span></p>
+                            <p>UV Index: <span id="uv-index"></span></p>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <h3>5-Day Forecast</h3>
+                        <h3>5 Day Forecast</h3>
                         
                     </div>
                 </div>
@@ -93,7 +99,17 @@
             </div>
         </div>
     </div>
-    <script src="./public/js/script.js"></script>
+    
+<!-- Jquery reference -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+ 
+<script src="./public/js/script.js"></script>
+
+  
+
+
 </body>
 </html>
 

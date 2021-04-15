@@ -1,5 +1,20 @@
-html, body, .container-fluid, .content-row {
+.selector-for-some-widget {
+  box-sizing: content-box;
+}
+
+    html, body  {
   height: 100%;
+}
+.content-row {
+  height: 100%;
+  font-family: 'Righteous', cursive;
+    font-size: 20px;
+}
+.container-fluid{
+  height: 100%;
+  background-color: rgb(152, 224, 230);
+  font-family: 'Righteous', cursive;
+
 }
 
 .hide {
@@ -7,10 +22,18 @@ html, body, .container-fluid, .content-row {
 }
 
 .city-btn:hover {
-  background-color: #f6f5f5;
+  background-color: rgb(152, 224, 230);
   cursor: pointer;
 }
 
 .card {
-  background-color: #cce5ff;
+  background-color: #b7c9d1;
 }
+
+p{ font-family: 'Righteous', cursive; }
+
+
+    
+
+
+

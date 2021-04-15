@@ -1,3 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <!-- Bootstrap is developed mobile first, a strategy in which we optimize code for mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather</title>
+
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+<!-- CSS Reference 
+<link rel="stylesheet" href="./public/css/style.css" />
+-->
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet" type="text/css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+<!-- Jquery reference -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+ 
+
+
+  </head>
+
+<style>
+    
+    .selector-for-some-widget {
+  box-sizing: content-box;
+}
+
+    html, body  {
+  height: 100%;
+}
+.content-row {
+  height: 100%;
+  font-family: 'Righteous', cursive;
+    font-size: 20px;
+}
+.container-fluid{
+  height: 100%;
+  background-color: rgb(152, 224, 230);
+  font-family: 'Righteous', cursive;
+
+}
+
+.hide {
+  display: none;
+}
+
+.city-btn:hover {
+  background-color: rgb(152, 224, 230);
+  cursor: pointer;
+}
+
+.card {
+  background-color: #b7c9d1;
+}
+
+p{ font-family: 'Righteous', cursive; }
+
+</style>
+<body>
+    <div class="container-fluid">
+        <div class="row navbar navbar-primary bg-info">
+            <div class="col-12 text-center">
+                <h1 class="text-uppercase">Weather Dashboard Report</h1>
+                <p><abbr title="openweathermap">OWM</abbr>Abrebations</p>
+                <p><abbr title="Farengeit">F</abbr> </p>
+                <p><abbr title="Mileagepourhour">MPH</abbr></p>
+               
+                <blockquote>	
+                    <p class="text-light">Resource Source https://openweathermap.org/api</p>
+                    </blockquote>
+
+            </div>
+        </div>
+        <div class="row content-row">
+            <div class="col-12 col-md-3 bg-secondary pt-3">
+               
+                <h4>Search for<mark>name city</mark>:</h4>
+                <form>
+                    <div class="form-group input-group">
+                        <input type="text" class="form-control" id="search-city" placeholder="Enter city here">
+                        <div class="input-group-append">
+                            <button class="btn btn-info" type="button" id="search-city-button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <!-- Seach History -->
+                <div class="card">
+                    <ul class="list-group list-group-flush" id="search-history-list">
+                        <!-- <li class="list-group-item"></li> -->
+                        
+                    </ul>
+                    <button id="clear-history" class="btn btn-sm btn-info hide">Clear History</button>
+                </div>
+            </div>
+            <div id="weather-content" class="col-12 col-md-9 hide">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="city-info border rounded my-3 px-3 py-3">
+                            <h2 id="current-city">City Information <small class="text-muted" id="current-date"></small></h2>
+
+                            <p class="mb-0">Temperature: <span id="current-temp"></span></p>
+                            <p class="mb-0">Humidity: <span id="current-humidity"></span></p>
+                            <p class="mb-0">Wind Speed: <span id="current-wind-speed"></span></p>
+                            <p>UV Index: <span id="uv-index"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h3>5 Day Forecast</h3>
+                        
+                    </div>
+                </div>
+                <div id="five-day-forecast" class="row">
+                    <div class="col-2">
+                        <div class="card">
+                            <div class="card-body">
+                            <h5 class="card-title">Date</h5>
+                            <i class="fa fa-sun"></i>
+                            <p class="card-text">Temp: </p>
+                            <p class="card-text">Humidity: </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Call file java script 
+    <script src="./public/js/script.js"></script>
+-->
+<script>
 var searchHistoryList = $('#search-history-list');
 var searchCityInput = $("#search-city");
 var searchCityButton = $("#search-city-button");
@@ -246,7 +392,11 @@ function showClear() {
     }
 }
 
+</script>  
 
+
+</body>
+</html>
 
     
 

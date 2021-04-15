@@ -39,8 +39,15 @@ and you can plan a trip accordingly to the weather
 ## Usage
 :speech_balloon:  :hammer: :eyeglasses:
   ***
-
-
+```
+Css
+Html
+Java Script
+Ajax
+moment.js
+boostrap 
+https://fonts.google.com/
+```
 ### How to start
 
 ```
